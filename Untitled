@@ -1,0 +1,44 @@
+                  <div id="mandatory_training" style="visibility: visible">
+                      <hr>
+                      <h3>Mandatory Training </h3>
+
+                        <p>Menu Mandatory Training Map dapat Anda gunakan untuk memetakan training-training apa saja yang harus diikuti oleh karyawan dengan posisi dan grade tertentu pada suatu departemen.</p>
+
+                          <h5>Mandatory Training List</h5>
+                        <p>
+                            Untuk Melihat semua daftar Mandatory Training yang telah dibuat, anda dapat mengklik menu sidebar <strong>"Mandatory Training Map"</strong> yang ada pada bagian Course Matrix
+                        </p>
+
+                        <h5>Tambah Mandatory Training </h5>
+                        <p>
+                            Untuk menambahkan Mandatory Training  dapat anda lakukan dengan langkah sebagai berikut:
+                            <ol>
+                                <li>Klik Menu Mandatory Training Map pada SideBar</li>
+                                <li>Klik Tombol/Button <button class="btn btn-primary btn-sm">+ Add</button> yang ada pada bagian kanan atas dari daftar Mandatory Training yang ada.</li>
+                                <li>Setelah itu, pilih Grade, Position yang ingin anda tambahkan</li>
+                                <li>Kemudian tentukan Training-training yang wajib untuk Grade dan Position terseebut</li>
+                                <li>setelah itu Klik save</li>
+                            </ol>
+                        </p>
+
+                        <h5>Edit dan Hapus Mandatory Training </h5>
+                        <p>
+                            Untuk menngedit Mandatory Training dapat anda lakukan dengan langkah sebagai berikut:
+                            <ol>
+                                <li>Klik Menu Mandatory Training pada SideBar</li>
+                                <li>Klik Field Name pada Mandatory Training yang ingin anda edit</li>
+                                <li>Setelah itu, lakuan perubah pada form sesuai dengan perubahan yang ingin dilakukan</li>
+                                <li>Klik save</li>
+                            </ol>
+                        </p>
+                        <p>
+                            Sedangkan untuk menghapus Mandatory Training dapat dilakukan dengan langkah sebagai berikut:
+                            <ol>
+                                <li>Klik Menu Mandatory Training pada SideBar</li>
+                                <li>Kemudian tekan Tombol/Button <button class="btn btn-danger btn-sm"><span data-feather="trash-2"></span></button></button>  pada Mandatory Training yang ingin anda hapus.</li>
+                                <li>Setelah itu, Akan muncul dialog yang menanyakan Apakah anda benar-benar ingin menghapus item tersebut, Klik OK jika ingin melanjutkan, dan klik Cancel jika anda ingin membatalkan </li>
+                            </ol>
+
+                        </p>
+
+                  </div>
