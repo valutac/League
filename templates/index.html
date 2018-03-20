@@ -1,47 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Valutac Championship League</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/sticky_footer_bootstrap.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-  </head>
-  <body>
+{% extends "base.html" %}
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Valutac League</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="https://valutac.com/company/team/">About us</a></li>
-            <!-- <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+{% block titel %}
+Valutac Championship League
+{% endblock %}
+
+{% block content %}
     <div class="container" id="content">
         <div class="row">
 
@@ -61,39 +24,19 @@
                 <th>GD</th>
                 <th>P</th>
               </tr>
+              {% for team in teams %}
               <tr>
-                <td>1</td>
-                <td><img src="images/logo-2.png" width="24px"> <a href="doaibu.html">Doa Ibu</a></td>
-                <td>4</td>
-                <td>0</td>
-                <td>0</td>
-                <td>46</td>
-                <td>21</td>
-                <td>25</td>
-                <td>12</td>
+                <td>{{ forloop.counter }}</td>
+                <td><img src="{{ team.logo.url }}" width="24px"> <a href="{% url 'club-detail' team.id %}">{{team.name}}</a></td>
+                <td>{{ team.get_win_amount }}</td>
+                <td>{{ team.get_draw_amount }}</td>
+                <td>{{ team.get_loose_amount }}</td>
+                <td>{{ team.get_goal_for }}</td>
+                <td>{{ team.get_goal_against }}</td>
+                <td>{{ team.get_goal_differents }}</td>
+                <td>{{ team.get_points }}</td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td><img src="images/doaibu.png" width="24px"> <a href="whitewalker.html">White Walker</a></td>
-                <td>1</td>
-                <td>1</td>
-                <td>2</td>
-                <td>27</td>
-                <td>34</td>
-                <td>-7</td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td><img src="images/nightfurry.png" width="24px"> <a href="nightfurry.html">Nightfurry</a></td>
-                <td>0</td>
-                <td>1</td>
-                <td>3</td>
-                <td>31</td>
-                <td>39</td>
-                <td>-8</td>
-                <td>1</td>
-              </tr>
+              {% endfor %}
             </table>
           </div>
           <div class="col-md-6">
@@ -107,18 +50,16 @@
                 <th><span class="icon-yellow glyphicon glyphicon-stop"></span></th>
                 <th><span class="icon-red glyphicon glyphicon-stop" aria-hidden="true"></span></th>
               </tr>
+              {% for player in players%}
+              {% if player.get_yellow_cards != 0 or player.get_red_cards != 0 %}
               <tr>
-                <td>1</td>
-                <td><a href="ichal.html">Achmad Gozali</a></td>
-                <td>1</td>
-                <td>0</td>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="ichal.html">{{player.name}}</a></td>
+                <td>{{ player.get_yellow_cards }}</td>
+                <td>{{ player.get_red_cards }}</td>
               </tr>
-              <tr>
-                <td>1</td>
-                <td><a href="dika.html">Andika Saputra</a></td>
-                <td>1</td>
-                <td>0</td>
-              </tr>
+              {%endif%}
+              {% endfor %}
             </table>
           </div>
 
@@ -137,12 +78,18 @@
                 <th>Player Name</th>
                 <th>Goals</th>
               </tr>
+              {% for x in player_goals %}
               <tr >
-                <td>1</td>
+                <td>{{ forloop.counter }}</td>
                 <td><i class="glyphicon glyphicon-triangle-top" style="color:green;"></i></td>
-                <td><a href="rizky.html">Rizky A</a> <span class="label label-danger">Top scorer</span></td>
-                <td>23</td>
+                <td><a href="{% url 'player-detail' x.player.pk %}">{{x.player.name}}</a>
+                  {% if forloop.counter == 1 %}
+                  <span class="label label-danger">Top scorer</span>
+                  {% endif %}
+                </td>
+                <td>{{ x.player.get_goals }}</td>
               </tr>
+              {% endfor %}
               <tr>
                 <td>2</td>
                 <td><i class="glyphicon glyphicon-triangle-bottom" style="color:red;"></i></td>
@@ -309,12 +256,4 @@
 
     </div>
 
-
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">&copy Valutac. All rights reserved except where noted</p>
-      </div>
-    </footer>
-    <link rel="stylesheet" href="css/bootstrap.min.js">
-  </body>
-</html>
+{% endblock %}

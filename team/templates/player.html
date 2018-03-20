@@ -1,0 +1,283 @@
+{% extends "base.html" %}
+{% block title %}
+{{ player.name }}
+{%endblock%}
+
+{% block content %}
+    <div class="container">
+      <div class="row" style="margin-top: 8%;">
+        <div class="col-md-4 col-sm-4 text-center">
+          <img class="img-responsive img-thumbnail" src="{{ player.image.url }}" style="width:180px;">
+        </div>
+        <div class="col-md-8 col-sm-8">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <h2>{{ player.name }} <span class="label label-danger">94</span></h2>
+              <h3>{{ player.position_name }}</h3>
+              <h3>
+                  {% if player.position_code == 'cf' %}
+                  <span class="label label-danger">
+                  {% elif player.position_code == 'mf' %}
+                  <span class="label label-success">
+                  {% elif player.position_code == 'cb' %}
+                  <span class="label label-info">
+                  {% endif %}
+                  {{player.get_position_code_display}}
+                  </span>
+              </h3>
+            </div>
+            <div class="col-md-4 col-sm-4 text-right">
+              <h2>{{ player.club.name }}</h2>
+              <img src="{{ player.club.logo.url}}" width="48px">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 24px;">
+        <div class="col-md-4">
+          <table class="table">
+            <tr>
+              <td>OVERALL</td>
+              <td><span class="label label-danger">{{player.get_overall_amount}}</span></td>
+            </tr>
+            <tr>
+              <td>VALUE</td>
+              <td>USD $</td>
+            </tr>
+            <tr>
+              <td>PREFERRED FOOT</td>
+              <td>{{ player.get_preferred_foot_display }}</td>
+            </tr>
+            <tr>
+              <td>NATIONALITY</td>
+              <td>{{ player.get_natiolity_display}}</td>
+            </tr>
+            <tr>
+              <td>INJURY</td>
+              <td><span class="label label-warning">{{player.get_injury_display}}</span></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-8">
+          <table class="table">
+            <tr>
+              <td>BALANCE</td>
+              <td>
+                  {% if player.balance >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.balance >= 80 and player.balance < 90%}
+                  <span class="label label-success">
+                  {% elif player.balance < 80 and player.balance >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.balance < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.balance}}
+                  </span>
+              </td>
+
+                <td>DRIBBLING</td>
+              <td>
+                  {% if player.dribbling >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.dribbling >= 80 and player.dribbling < 90 %}
+                  <span class="label label-success">
+                  {% elif player.dribbling < 80 and player.dribling >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.dribling < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.dribbling}}
+                  </span>
+              </td>
+            </tr>
+            <tr>
+              <td>STAMINA</td>
+              <td>
+                  {% if player.stamina >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.stamina >= 80 and player.stamina < 90 %}
+                  <span class="label label-success">
+                  {% elif player.stamina < 80 and player.stamina >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.stamina < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.stamina}}
+                  </span>
+              </td>
+              <td>SHOOTING</td>
+              <td>
+                  {% if player.shooting >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.shooting >= 80 and player.shooting < 90 %}
+                  <span class="label label-success">
+                  {% elif player.shooting < 80 and player.shooting >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.shooting < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.shooting}}
+                  </span>
+              </td>
+            </tr>
+            <tr>
+              <td>PASSING</td>
+              <td>
+                  {% if player.passing >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.passing >= 80 and player.passing < 90 %}
+                  <span class="label label-success">
+                  {% elif player.passing < 80 and player.passing >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.passing < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.passing}}
+                  </span>
+              </td>
+              <td>ABILITY</td>
+              <td>
+                  {% if player.ability >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.ability >= 80 and player.ability < 90 %}
+                  <span class="label label-success">
+                  {% elif player.ability < 80 and player.ability >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.ability < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.ability}}
+                  </span>
+              </td>
+            </tr>
+            <tr>
+              <td>SKILL</td>
+              <td>
+                  {% if player.skill >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.skill >= 80 and player.skill < 90 %}
+                  <span class="label label-success">
+                  {% elif player.skill < 80 and player.skill >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.skill < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.skill}}
+                  </span>
+              </td>
+              <td>DEFEND</td>
+              <td>
+                  {% if player.defend >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.defend >= 80 and player.defend < 90 %}
+                  <span class="label label-success">
+                  {% elif player.defend < 80 and player.defend >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.defend < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.defend}}
+                  </span>
+              </td>
+            </tr>
+            <tr>
+              <td>ATTACK</td>
+              <td>
+                  {% if player.attack >= 90 %}
+                  <span class="label label-danger">
+                  {% elif player.attack >= 80 and player.attack < 90 %}
+                  <span class="label label-success">
+                  {% elif player.attack < 80 and player.attack >= 70 %}
+                  <span class="label label-info">
+                  {% elif player.attack < 70 %}
+                  <span class="label label-danger">
+                  {% endif %}
+                      {{player.attack}}
+                  </span>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="">
+                  <h4>Careers</h4>
+              </div>
+              <div class="table-responsive">
+              <table class="table table-hover table-striped">
+                  <tr style="background:#011b51;color:#fff">
+                      <th>Team</th>
+                      <th>Season</th>
+                      <th width="10%">Pos</th>
+                      <th width="8%">M</th>
+                      <th width="8%">G</th>
+                      <th width="8%">A</th>
+                      <th width="8%">OG</th>
+                      <th width="8%"><span class="icon-yellow glyphicon glyphicon-stop"></span></th>
+                      <th width="8%"><span class="icon-red glyphicon glyphicon-stop"></span></th>
+                  </tr>
+                  <tr >
+                      <td>Doa Ibu</td>
+                      <td>March 2018</td>
+                      <td><span class="label label-success">MF</span></td>
+                      <td>2</td>
+                      <td>11</td>
+                      <td>12</td>
+                      <td>2</td>
+                      <td>0</td>
+                      <td>0</td>
+                  </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="">
+                    <h4>History</h4>
+                </div>
+                <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <tr style="background:#011b51;color:#fff">
+                        <th width="15%">Team</th>
+                        <th width="15%">Oppo</th>
+                        <th width="15%">Date</th>
+                        <th width="15%">Score</th>
+                        <th width="8%">G</th>
+                        <th width="8%">A</th>
+                        <th width="8%">OG</th>
+                        <th width="8%"><span class="icon-yellow glyphicon glyphicon-stop"></span></th>
+                        <th width="8%"><span class="icon-red glyphicon glyphicon-stop"></span></th>
+                    </tr>
+                    <tr >
+                        <td>Doa Ibu</td>
+                        <td>White Walker</td>
+                        <td>10/03/2018</td>
+                        <td>W 8 - 3</td>
+                        <td>3</td>
+                        <td>5</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                        <td>Doa Ibu</td>
+                        <td>Nightfurry</td>
+                        <td>10/03/2018</td>
+                        <td>W 15 - 10</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+    </div>
+
+{% endblock %}
